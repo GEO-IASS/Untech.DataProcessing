@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6A676B5C-4BAA-4976-B609-905A78FBB993}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Untech.DataProcessing.Images</RootNamespace>
+    <AssemblyName>Untech.DataProcessing.Images</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Untech.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BandType.cs" />
+    <Compile Include="Hyperspectral\HyperspectralImage.cs" />
+    <Compile Include="Hyperspectral\HyperspectralImageInfo.cs" />
+    <Compile Include="Metrics\PSNRCalculator.cs" />
+    <Compile Include="NLS\NLS3DCoder.cs" />
+    <Compile Include="NLS\NLS3DDecoder.cs" />
+    <Compile Include="NLS\NLSConstants.cs" />
+    <Compile Include="NLS\NLSHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SPIHT\Spiht3DCoder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SPIHT\Spiht3DDecoder.cs" />
+    <Compile Include="SPIHT\Spiht3DPixelNode.cs" />
+    <Compile Include="SPIHT\Spiht3DSetNode.cs" />
+    <Compile Include="SPIHT\SpihtHelpers.cs" />
+    <Compile Include="SPIHT\SubbandSize.cs" />
+    <Compile Include="Wavelet\BaseWaveletTransformation.cs" />
+    <Compile Include="Wavelet\Daubechies\Wavelet53RTransformation.cs" />
+    <Compile Include="Wavelet\Daubechies\Wavelet97ITransformation.cs" />
+    <Compile Include="Wavelet\IWaveletTransformation.cs" />
+    <Compile Include="Wavelet\WaveletTransformationController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Untech.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Wavelet\Daubechies\Cuda\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Untech.DataProcessing.Common\Untech.DataProcessing.Common.csproj">
+      <Project>{0DE6606A-5037-4E81-B99A-967E8B3F7C32}</Project>
+      <Name>Untech.DataProcessing.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Untech.DataProcessing.Compression\Untech.DataProcessing.Compression.csproj">
+      <Project>{4E9D5717-97B7-4892-BBF7-12CE9D4E68FF}</Project>
+      <Name>Untech.DataProcessing.Compression</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
